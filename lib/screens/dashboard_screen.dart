@@ -176,9 +176,10 @@ class _DashboardScreenState extends State<DashboardScreen>
   Widget _buildInfoCard({
     required IconData icon,
     required String title,
-    required String value,
+    required DeviceInfoModel values,
     required Color color,
     required int delay,
+    required String type,
   }) {
     return TweenAnimationBuilder(
       duration: Duration(milliseconds: 600 + delay),
@@ -232,7 +233,7 @@ class _DashboardScreenState extends State<DashboardScreen>
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          value.toString(),
+                          type=="OS"?values.osVersion:values.deviceName,
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -353,17 +354,20 @@ class _DashboardScreenState extends State<DashboardScreen>
                 _buildInfoCard(
                   icon: Icons.phone_android,
                   title: 'Device Name',
-                  value: model.deviceName ?? 'Unknown',
+                  values: model,
                   color: Colors.green,
                   delay: 0,
+                  type: "DEVICE"
+
                 ),
 
                 _buildInfoCard(
                   icon: Icons.settings,
                   title: 'OS Version',
-                  value: model.osVersion ?? 'Unknown',
+                  values: model,
                   color: Colors.purple,
                   delay: 100,
+                  type: "OS"
                 ),
 
                 const SizedBox(height: 32),

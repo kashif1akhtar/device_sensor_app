@@ -14,11 +14,11 @@ void main() {
           .setMockMethodCallHandler(channel, (call) async {
         switch (call.method) {
           case 'getBatteryLevel':
-            return 85;
+            return 100;
           case 'getDeviceName':
-            return 'Test Device';
+            return 'Pixel 6';
           case 'getOsVersion':
-            return 'Test OS 1.0';
+            return '15';
           default:
             return null;
         }
@@ -28,9 +28,9 @@ void main() {
 
     test('fetchDeviceInfo updates model values', () async {
       await model.fetchDeviceInfo();
-      expect(model.batteryLevel, '85');
-      expect(model.deviceName, 'Test Device');
-      expect(model.osVersion, 'Test OS 2.0');
+      expect(model.batteryLevel, '100');
+      expect(model.deviceName, 'Pixel 6');
+      expect(model.osVersion, '15');
     });
   });
 }

@@ -18,13 +18,12 @@ class DeviceInfoModel with ChangeNotifier {
 
   Future<void> fetchDeviceInfo() async {
     _isLoading = true;
-    notifyListeners();
 
     try {
       final battery = await _channel.invokeMethod('getBatteryLevel');
       final device = await _channel.invokeMethod('getDeviceName');
       final os = await _channel.invokeMethod('getOsVersion');
-       print("Battery Level"+battery.toString());
+      print("Battery Level"+battery.toString());
       print("device Level"+device.toString());
       print("os Level"+os.toString());
       _batteryLevel = battery.toString();
